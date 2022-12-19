@@ -1,0 +1,34 @@
+{% extends "user/index.html" %}
+{% load crispy_forms_tags %}
+{% block start %}
+<!DOCTYPE html>
+<html>
+    <body>
+   
+ 
+            <center><h1> Please Upload The Image </h1></center>
+        {% comment %} <form method = "POST" style="border: 1px solid black; margin: 4%; padding:10px; border-radius:1%;" > {% endcomment %}
+            <form method="post" enctype="multipart/form-data"  style="border: 1px solid black; margin: 10px auto; padding:10px; border-radius:1%; width: 400px">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                {{ form|crispy}}
+                </fieldset>
+            <center>
+                <label for="name">Name:</label><br><br>
+                <center><input type="text" id="name" name="name"><br><br><br></center>
+                <input type="file" name="image"><br><br>
+                <button type="submit">Submit</button>
+            </center>
+              </form>
+        
+
+        <br>
+        <br>
+        <center>
+        <h3>{{ pred }} </h3>
+        <img src="{{ file_url }}" width = "300" height = "300"/>
+        </center>
+
+        </body>
+    </html>
+{% endblock start %}
